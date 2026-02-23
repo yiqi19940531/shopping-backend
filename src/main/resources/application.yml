@@ -33,3 +33,10 @@ springdoc:
     path: /v3/api-docs
   swagger-ui:
     enabled: true
+
+logging:
+  level:
+    root: INFO
+    com.qoder.mall: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{traceId}] [%X{spanId}] [%thread] %-5level %logger{36} - %msg%n"
