@@ -1,6 +1,18 @@
 # Shopping Backend
 
+<div align="center">
+
+![Java](https://img.shields.io/badge/Java-17-orange?style=flat-square&logo=openjdk)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.5-brightgreen?style=flat-square&logo=spring)
+![MyBatis-Plus](https://img.shields.io/badge/MyBatis--Plus-3.5.5-blue?style=flat-square)
+![MySQL](https://img.shields.io/badge/MySQL-8.0%2B-blue?style=flat-square&logo=mysql)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+
 电商后端系统 - 基于Spring Boot 3.2.5、MyBatis-Plus的电商平台后端服务
+
+[功能特性](#主要功能) • [快速开始](#快速开始) • [API文档](#api端点) • [贡献指南](#贡献指南)
+
+</div>
 
 ## 技术栈
 
@@ -81,6 +93,14 @@ mvn spring-boot:run
 http://localhost:8080/doc.html
 ```
 
+### 默认账户
+
+| 角色 | 用户名 | 密码 | 说明 |
+|------|--------|------|------|
+| 管理员 | admin | admin123 | 拥有所有权限 |
+| 普通用户 | user1 | user123 | 普通用户权限 |
+| 普通用户 | user2 | user123 | 普通用户权限 |
+
 ## API端点
 
 ### 用户相关
@@ -111,6 +131,67 @@ http://localhost:8080/doc.html
 - RESTful API设计
 - JWT令牌认证
 - 逻辑删除策略
+
+## 测试
+
+### 运行单元测试
+
+```bash
+mvn test
+```
+
+### 运行集成测试
+
+```bash
+mvn verify
+```
+
+## 项目状态
+
+- [x] 用户认证与授权
+- [x] 商品管理
+- [x] 订单管理
+- [x] 购物车功能
+- [x] 文件上传
+- [ ] 支付集成
+- [ ] 物流跟踪
+- [ ] 评价系统
+
+## 贡献指南
+
+欢迎贡献！请遵循以下步骤：
+
+1. Fork 该仓库
+2. 创建您的特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交您的更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启一个 Pull Request
+
+### 分支策略
+
+- `main` - 生产环境分支，保持稳定
+- `dev` - 开发分支，日常开发使用
+- `feature/*` - 功能分支，开发新功能时创建
+- `bugfix/*` - 修复分支，修复 bug 时创建
+
+## 常见问题
+
+### 1. 数据库连接失败
+
+检查 `application.yml` 中的数据库配置是否正确，确保MySQL服务已启动。
+
+### 2. JWT Token 失效
+
+Token 默认有效期为7天，过期后需要重新登录。
+
+### 3. 端口占用
+
+如果8080端口被占用，可以在 `application.yml` 中修改 `server.port` 配置。
+
+## 联系方式
+
+- 项目作者：[@yiqi19940531](https://github.com/yiqi19940531)
+- Issue: [GitHub Issues](https://github.com/yiqi19940531/shopping-backend/issues)
 
 ## 许可证
 

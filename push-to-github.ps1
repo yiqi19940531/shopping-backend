@@ -45,10 +45,10 @@ Write-Host "`nCommitting changes..." -ForegroundColor Yellow
 git commit -m "Initial commit: Shopping Backend System with Spring Boot 3.2.5"
 Write-Host "✓ Changes committed" -ForegroundColor Green
 
-# Set branch to main
-Write-Host "`nSetting branch to main..." -ForegroundColor Yellow
-git branch -M main
-Write-Host "✓ Branch set to main" -ForegroundColor Green
+# Set branch to dev (development branch)
+Write-Host "`nSetting branch to dev..." -ForegroundColor Yellow
+git branch -M dev
+Write-Host "✓ Branch set to dev" -ForegroundColor Green
 
 # Add remote origin
 Write-Host "`nConfiguring remote repository..." -ForegroundColor Yellow
@@ -56,10 +56,10 @@ git remote remove origin 2>$null
 git remote add origin https://github.com/yiqi19940531/shopping-backend.git
 Write-Host "✓ Remote repository configured" -ForegroundColor Green
 
-# Push to GitHub
-Write-Host "`nPushing to GitHub..." -ForegroundColor Yellow
+# Push to GitHub dev branch
+Write-Host "`nPushing to GitHub dev branch..." -ForegroundColor Yellow
 Write-Host "(You may need to enter your GitHub credentials)" -ForegroundColor Cyan
-git push -u origin main --force
+git push -u origin dev --force
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host "`n========================================" -ForegroundColor Green
