@@ -1,6 +1,7 @@
 package com.qoder.mall.config;
 
 import com.qoder.mall.security.filter.JwtAuthenticationFilter;
+import com.qoder.mall.security.filter.TraceFilter;
 import com.qoder.mall.security.handler.AccessDeniedHandlerImpl;
 import com.qoder.mall.security.handler.AuthenticationEntryPointImpl;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final TraceFilter traceFilter;
     private final AuthenticationEntryPointImpl authenticationEntryPoint;
     private final AccessDeniedHandlerImpl accessDeniedHandler;
 
@@ -55,6 +57,7 @@ public class SecurityConfig {
                         // All other endpoints require authentication
                         .anyRequest().authenticated()
                 )
+                .addFilterBefore(traceFilter, JwtAuthenticationFilter.class)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

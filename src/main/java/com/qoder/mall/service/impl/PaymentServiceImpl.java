@@ -1,5 +1,6 @@
 package com.qoder.mall.service.impl;
 
+import com.qoder.mall.common.util.LogKit;
 import com.qoder.mall.service.IOrderService;
 import com.qoder.mall.service.IPaymentService;
 import lombok.RequiredArgsConstructor;
@@ -17,17 +18,22 @@ public class PaymentServiceImpl implements IPaymentService {
     @Async
     @Override
     public void mockPay(Long userId, String orderNo) {
-        log.info("模拟支付开始: orderNo={}", orderNo);
+        long startTime = System.currentTimeMillis();
+        LogKit.info("PAY_START", "模拟支付开始", "orderNo", orderNo, "userId", userId);
+        
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
+        
         try {
             orderService.payOrder(orderNo);
-            log.info("模拟支付成功: orderNo={}", orderNo);
+            long costMs = System.currentTimeMillis() - startTime;
+            LogKit.audit("PAY_SUCCESS", "支付成功", "orderNo", orderNo, "userId", userId, "costMs", costMs);
         } catch (Exception e) {
-            log.error("模拟支付失败: orderNo={}, error={}", orderNo, e.getMessage());
+            long costMs = System.currentTimeMillis() - startTime;
+            LogKit.error("PAY_FAILED", "支付失败", e, "orderNo", orderNo, "userId", userId, "costMs", costMs);
         }
     }
 }
